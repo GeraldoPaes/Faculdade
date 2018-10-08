@@ -52,4 +52,22 @@ public class MyCircle {
 	public String toString() {
 		return "Circle @ (" + this.center.getX() + "," + this.center.getY() + ") radius = " + this.getRadius() + "; area = " + this.getArea();
 	}
+	
+	public boolean equals(MyCircle c) {
+		boolean r;
+		
+		if(c != null && this.center != null) {
+			if(this.getCenter().equals(c.getCenter()) && this.getRadius() == c.getRadius()) {
+				r = true;
+			}
+			else {
+				r = false;
+			}
+		}
+		else {
+			r = false;
+		}
+		
+		return r;
+	}
 }
