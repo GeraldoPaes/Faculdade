@@ -57,7 +57,7 @@ public class MyCircle {
 		boolean r;
 		
 		if(c != null && this.center != null) {
-			if(this.getCenter().equals(c.getCenter()) && this.getRadius() == c.getRadius()) {
+			if(this.center.equals(c.center) && this.getRadius() == c.getRadius()) {
 				r = true;
 			}
 			else {
