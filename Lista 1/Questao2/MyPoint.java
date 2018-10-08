@@ -29,11 +29,49 @@ public class MyPoint {
 	}
 	
 	public String toString() {
-		return "(" + this.x + ", " + this.y + ")";
+		return "(" + this.x + "," + this.y + ")";
 	}
 	
 	public double distance(int x, int y) {
+		double a, x1, x2, y1, y2;
+		x1 = this.x;
+		x2 = x;
+		y1 = this.y;
+		y2 = y;
 		
+		a = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+		
+		return a;
+	}
+	
+	public double distance(MyPoint p) {
+		double a, x1, x2, y1, y2;
+		x1 = this.x;
+		x2 = p.getX();
+		y1 = this.y;
+		y2 = p.getY();
+		
+		a = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+		
+		return a;
+	}
+	
+	public boolean equals(MyPoint p) {
+		boolean r;
+		
+		if(p != null) {
+			if(this.x == p.getX() && this.y == p.getY()) {
+				r = true;
+			}
+			else {
+				r = false;
+			}
+		}
+		else {
+			r = false;
+		}
+		
+		return r;
 	}
 	
 }
