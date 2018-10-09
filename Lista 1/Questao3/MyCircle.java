@@ -3,12 +3,14 @@ public class MyCircle {
 	private int radius = 1;
 	
 	public MyCircle(int x, int y, int r) {
+		this.center = new MyPoint();
 		this.center.setX(x);
 		this.center.setY(y);
 		this.radius = r;
 	}
 	
 	public MyCircle(MyPoint center, int r) {
+		this.center = new MyPoint();
 		this.center = center;
 		this.radius = r;
 	}
