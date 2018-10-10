@@ -15,6 +15,21 @@ public class MyTriangle {
 		this.v3 = v3;
 	}
 	
+	public void setV1(int x, int y) {
+		this.v1.setX(x);
+		this.v1.setY(y);
+	}
+	
+	public void setV2(int x, int y) {
+		this.v2.setX(x);
+		this.v2.setY(y);
+	}
+	
+	public void setV3(int x, int y) {
+		this.v3.setX(x);
+		this.v3.setY(y);
+	}
+
 	public String getType() {
 		double a, b, c;
 		
@@ -34,7 +49,7 @@ public class MyTriangle {
 	}
 	
 	public String toString() {
-		return "MyTriangle " + this.getType() + "@ " + this.v1.toString() + ", " + this.v2.toString() + ", " + this.v3.toString();
+		return "MyTriangle " + this.getType() + " @ " + this.v1.toString() + ", " + this.v2.toString() + ", " + this.v3.toString();
 	}
 	
 	public double getPerimeter() {
