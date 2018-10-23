@@ -22,13 +22,25 @@ public class Territorio {
 		}
 		
 		this.mapa[0][0] = this.p1Name.charAt(0);
-		this.mapa[this.size][this.size] = this.p2Name.charAt(0);
+		this.mapa[this.size - 1][this.size - 1] = this.p2Name.charAt(0);
 		this.p1L = 0;
 		this.p1C = 0;
-		this.p2L = this.size;
-		this.p2C = this.size;
+		this.p2L = this.size - 1;
+		this.p2C = this.size - 1;
 	}
 	
+	public String getP1Name() {
+		return p1Name;
+	}
+
+	public String getP2Name() {
+		return p2Name;
+	}
+
+	public char getPoint(int l, int c) {
+		return this.mapa[l][c];
+	}
+
 	public int checarColisao(char point) {
 		if(point != '*') {
 			return 1;
@@ -55,13 +67,13 @@ public class Territorio {
 			mapa[this.p1L][this.p1C - 1] = this.p1Name.charAt(0);
 			return checarColisao(mapa[this.p1L][this.p1C - 1]);
 		case 's': 
-			if(this.p1L == this.size) {
+			if(this.p1L == this.size - 1) {
 				return 1;
 			}
 			mapa[this.p1L + 1][this.p1C] = this.p1Name.charAt(0);
 			return checarColisao(mapa[this.p1L + 1][this.p1C]);
 		case 'd': 
-			if(this.p1C == this.size) {
+			if(this.p1C == this.size - 1) {
 				return 1;
 			}
 			mapa[this.p1L][this.p1C + 1] = this.p1Name.charAt(0);
@@ -88,13 +100,13 @@ public class Territorio {
 			mapa[this.p2L][this.p2C - 1] = this.p1Name.charAt(0);
 			return checarColisao(mapa[this.p2L][this.p2C - 1]);
 		case 's': 
-			if(this.p2L == this.size) {
+			if(this.p2L == this.size - 1) {
 				return 1;
 			}
 			mapa[this.p2L + 1][this.p2C] = this.p1Name.charAt(0);
 			return checarColisao(mapa[this.p2L + 1][this.p2C]);
 		case 'd': 
-			if(this.p2C == this.size) {
+			if(this.p2C == this.size - 1) {
 				return 1;
 			}
 			mapa[this.p2L][this.p2C + 1] = this.p1Name.charAt(0);
