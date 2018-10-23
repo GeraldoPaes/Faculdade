@@ -29,33 +29,78 @@ public class Territorio {
 		this.p2C = this.size;
 	}
 	
-	public void movePlayer1(String d) {
-		char move = d.charAt(0);
-		
-		switch(move) {
-		case 'w': mapa[this.p1L - 1][this.p1C] = this.p1Name.charAt(0);
-		break;
-		case 'a': mapa[this.p1L][this.p1C - 1] = this.p1Name.charAt(0);
-		break;
-		case 's': mapa[this.p1L + 1][this.p1C] = this.p1Name.charAt(0);
-		break;
-		case 'd': mapa[this.p1L][this.p1C + 1] = this.p1Name.charAt(0);
-		break;
+	public int checarColisao(char point) {
+		if(point != '*') {
+			return 1;
+		}
+		else {
+			return 0;
 		}
 	}
 	
-	public void movePlayer2(String d) {
+	public int movePlayer1(String d) {
 		char move = d.charAt(0);
 		
 		switch(move) {
-		case 'w': mapa[this.p2L - 1][this.p2C] = this.p1Name.charAt(0);
-		break;
-		case 'a': mapa[this.p2L][this.p2C - 1] = this.p1Name.charAt(0);
-		break;
-		case 's': mapa[this.p2L + 1][this.p2C] = this.p1Name.charAt(0);
-		break;
-		case 'd': mapa[this.p2L][this.p2C + 1] = this.p1Name.charAt(0);
-		break;
+		case 'w': 
+			if(this.p1L == 0) {
+				return 1;
+			}
+			mapa[this.p1L - 1][this.p1C] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p1L - 1][this.p1C]);
+		case 'a': 
+			if(this.p1C == 0) {
+				return 1;
+			}
+			mapa[this.p1L][this.p1C - 1] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p1L][this.p1C - 1]);
+		case 's': 
+			if(this.p1L == this.size) {
+				return 1;
+			}
+			mapa[this.p1L + 1][this.p1C] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p1L + 1][this.p1C]);
+		case 'd': 
+			if(this.p1C == this.size) {
+				return 1;
+			}
+			mapa[this.p1L][this.p1C + 1] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p1L][this.p1C + 1]);
+		default:
+			return -1;
+		}
+	}
+	
+	public int movePlayer2(String d) {
+		char move = d.charAt(0);
+		
+		switch(move) {
+		case 'w': 
+			if(this.p2L == 0) {
+				return 1;
+			}
+			mapa[this.p2L - 1][this.p2C] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p2L - 1][this.p2C]);
+		case 'a': 
+			if(this.p2C == 0) {
+				return 1;
+			}
+			mapa[this.p2L][this.p2C - 1] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p2L][this.p2C - 1]);
+		case 's': 
+			if(this.p2L == this.size) {
+				return 1;
+			}
+			mapa[this.p2L + 1][this.p2C] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p2L + 1][this.p2C]);
+		case 'd': 
+			if(this.p2C == this.size) {
+				return 1;
+			}
+			mapa[this.p2L][this.p2C + 1] = this.p1Name.charAt(0);
+			return checarColisao(mapa[this.p2L][this.p2C + 1]);
+		default:
+			return -1;
 		}
 	}
 
