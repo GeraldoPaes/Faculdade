@@ -50,34 +50,43 @@ public class Territorio {
 		}
 	}
 	
-	public int movePlayer1(String d) {
+	public int movePlayer1(String d){
 		char move = d.charAt(0);
+		int coli;
 		
 		switch(move) {
 		case 'w': 
 			if(this.p1L == 0) {
 				return 1;
 			}
+			coli = checarColisao(mapa[this.p1L - 1][this.p1C]);
 			mapa[this.p1L - 1][this.p1C] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p1L - 1][this.p1C]);
+			this.p1L -= 1;
+			return coli;
 		case 'a': 
 			if(this.p1C == 0) {
 				return 1;
 			}
+			coli = checarColisao(mapa[this.p1L][this.p1C - 1]);
 			mapa[this.p1L][this.p1C - 1] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p1L][this.p1C - 1]);
+			this.p1C -= 1;
+			return coli;
 		case 's': 
 			if(this.p1L == this.size - 1) {
 				return 1;
 			}
+			coli = checarColisao(mapa[this.p1L + 1][this.p1C]);
 			mapa[this.p1L + 1][this.p1C] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p1L + 1][this.p1C]);
+			this.p1L += 1;
+			return coli;
 		case 'd': 
 			if(this.p1C == this.size - 1) {
 				return 1;
 			}
+			coli = checarColisao(mapa[this.p1L][this.p1C + 1]);
 			mapa[this.p1L][this.p1C + 1] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p1L][this.p1C + 1]);
+			this.p1C += 1;
+			return coli;
 		default:
 			return -1;
 		}
@@ -85,32 +94,41 @@ public class Territorio {
 	
 	public int movePlayer2(String d) {
 		char move = d.charAt(0);
+		int coli;
 		
 		switch(move) {
 		case 'w': 
 			if(this.p2L == 0) {
 				return 1;
 			}
-			mapa[this.p2L - 1][this.p2C] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p2L - 1][this.p2C]);
+			coli = checarColisao(mapa[this.p2L - 1][this.p2C]);
+			mapa[this.p2L - 1][this.p2C] = this.p2Name.charAt(0);
+			this.p2L -= 1;
+			return coli;
 		case 'a': 
 			if(this.p2C == 0) {
 				return 1;
 			}
-			mapa[this.p2L][this.p2C - 1] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p2L][this.p2C - 1]);
+			coli = checarColisao(mapa[this.p2L][this.p2C - 1]);
+			mapa[this.p2L][this.p2C - 1] = this.p2Name.charAt(0);
+			this.p2C -= 1;
+			return coli;
 		case 's': 
 			if(this.p2L == this.size - 1) {
 				return 1;
 			}
-			mapa[this.p2L + 1][this.p2C] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p2L + 1][this.p2C]);
+			coli = checarColisao(mapa[this.p2L + 1][this.p2C]);
+			mapa[this.p2L + 1][this.p2C] = this.p2Name.charAt(0);
+			this.p2L += 1;
+			return coli;
 		case 'd': 
 			if(this.p2C == this.size - 1) {
 				return 1;
 			}
-			mapa[this.p2L][this.p2C + 1] = this.p1Name.charAt(0);
-			return checarColisao(mapa[this.p2L][this.p2C + 1]);
+			coli = checarColisao(mapa[this.p2L][this.p2C + 1]);
+			mapa[this.p2L][this.p2C + 1] = this.p2Name.charAt(0);
+			this.p2C += 1;
+			return coli;
 		default:
 			return -1;
 		}
